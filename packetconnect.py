@@ -1,10 +1,8 @@
 import socket
-import pickle, rehash
 import sys
 from urllib.request import urlopen
 import os
 from cryptography.fernet import Fernet
-import random
 def clearConsole():
     command = 'clear'
     if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
@@ -17,7 +15,6 @@ def sendReply(contactCode, destCode, s):
     msg = encryptionKey.encrypt(msgU) + '|' + destCode + '|' + contactCode + '|' + encryptionKey
     s.send(msg.encode('utf-8'))
 
-k = random.randint(1,2000)
 clearConsole()
 print('Welcome to PacketConnect')
 contact_code = input('Please enter a unique identifying code. You use this code to chat with others via PacketConnect: ')
